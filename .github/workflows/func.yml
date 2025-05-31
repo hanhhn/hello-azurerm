@@ -1,4 +1,4 @@
-name: CICD
+name: Build & Deploy Azure Function App
 
 on:
   push:
