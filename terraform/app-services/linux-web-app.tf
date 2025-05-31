@@ -14,15 +14,11 @@ resource "azurerm_linux_web_app" "linuxweb" {
 
   site_config {
     application_stack {
-      node_version = "20-lts"
+      node_version = "22-lts"
     }
 
     app_command_line = "node /home/site/wwwroot/main.js"
   }
 
-  app_settings = {
-    NODE_ENV = "production"
-    PORT     = "3000"
-  }
 }
 
