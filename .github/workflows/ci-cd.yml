@@ -34,7 +34,7 @@ jobs:
       - run: yarn nx affected -t build
 
       - name: Check build output
-        run: ls -al /dist/apps
+        run: ls -al dist/apps
 
       - name: Azure Login
         uses: azure/login@v1
