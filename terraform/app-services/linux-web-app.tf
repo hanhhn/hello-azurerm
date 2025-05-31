@@ -4,6 +4,8 @@ resource "azurerm_service_plan" "linux" {
   resource_group_name = azurerm_resource_group.main.name
   os_type             = "Linux"
   sku_name            = "P0v3"
+
+  worker_count = 1
 }
 
 resource "azurerm_linux_web_app" "linuxweb" {
@@ -17,8 +19,22 @@ resource "azurerm_linux_web_app" "linuxweb" {
       node_version = "22-lts"
     }
 
-    app_command_line = "node /home/site/wwwroot/main.js"
+    app_command_line = "cd /home/site/wwwroot && npm install && node main.js"
   }
-
 }
+
+resource "azurerm_linux_web_app_slot" "staging" {
+  name           = "staging"
+  app_service_id = azurerm_linux_web_app.linuxweb.id
+
+  site_config {
+    application_stack {
+      node_version = "22-lts"
+    }
+
+    app_command_line = "cd /home/site/wwwroot && npm install && node main.js"
+  }
+}
+
+
 
