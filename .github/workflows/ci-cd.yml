@@ -34,7 +34,7 @@ jobs:
       - run: yarn nx affected -t build
 
       - name: Check build output
-        run: ls -al dist/apps/hello-nestjs
+        run: ls -al .
 
       - name: Azure Login
         uses: azure/login@v1
