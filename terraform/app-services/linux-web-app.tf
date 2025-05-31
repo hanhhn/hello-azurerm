@@ -13,6 +13,16 @@ resource "azurerm_linux_web_app" "linuxweb" {
   service_plan_id     = azurerm_service_plan.linux.id
 
   site_config {
+    application_stack {
+      node_version = "20-lts"
+    }
+
+    app_command_line = "node /home/site/wwwroot/main.js"
+  }
+
+  app_settings = {
+    NODE_ENV = "production"
+    PORT     = "3000"
   }
 }
 
