@@ -33,9 +33,6 @@ jobs:
       # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
       - run: yarn nx affected -t build
 
-      - name: Check build output
-        run: ls -al ./dist/apps
-
       - name: Azure Login
         uses: azure/login@v1
         with:
