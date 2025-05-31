@@ -1,0 +1,40 @@
+{
+  "name": "hello-nestjs",
+  "$schema": "../../node_modules/nx/schemas/nx-schema.json",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "webpack-cli build",
+        "args": ["node-env=development"]
+      },
+      "configurations": {
+        "development": {
+          "args": ["node-env=development"]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "hello-nestjs:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "hello-nestjs:build:development"
+        },
+        "production": {
+          "buildTarget": "hello-nestjs:build:production"
+        }
+      }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/hello-nestjs/Dockerfile . -t hello-nestjs"
+    }
+  }
+}
