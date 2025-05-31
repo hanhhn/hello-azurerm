@@ -1,0 +1,6 @@
+@Hello.HelloWebApi_HostAddress = http://localhost:5233
+
+GET {{Hello.HelloWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

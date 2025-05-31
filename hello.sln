@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{2F3EFE2F-D59C-42A3-869A-BF6276BCD06A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello.HelloWebApi", "apps\hello-web-api\Hello.HelloWebApi.csproj", "{374702CB-62D1-4E68-A0A0-27A69A55D6DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello.HelloWebApi.Test", "apps\hello-web-api.Test\Hello.HelloWebApi.Test.csproj", "{FD687AEE-2962-4F34-8C27-A2E5999D041D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{374702CB-62D1-4E68-A0A0-27A69A55D6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{374702CB-62D1-4E68-A0A0-27A69A55D6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{374702CB-62D1-4E68-A0A0-27A69A55D6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{374702CB-62D1-4E68-A0A0-27A69A55D6DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD687AEE-2962-4F34-8C27-A2E5999D041D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD687AEE-2962-4F34-8C27-A2E5999D041D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD687AEE-2962-4F34-8C27-A2E5999D041D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD687AEE-2962-4F34-8C27-A2E5999D041D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{374702CB-62D1-4E68-A0A0-27A69A55D6DF} = {2F3EFE2F-D59C-42A3-869A-BF6276BCD06A}
+		{FD687AEE-2962-4F34-8C27-A2E5999D041D} = {2F3EFE2F-D59C-42A3-869A-BF6276BCD06A}
+	EndGlobalSection
+EndGlobal

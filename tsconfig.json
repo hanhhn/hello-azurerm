@@ -4,10 +4,13 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/hello-nestjs-e2e"
+      "path": "./apps/hello-nestjs"
     },
     {
-      "path": "./apps/hello-nestjs"
+      "path": "./apps/hello-react"
+    },
+    {
+      "path": "./libs/generated/hello-web-api-types"
     }
   ]
 }

@@ -1,0 +1,23 @@
+{
+  "name": "hello-web-api-swagger",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "build": {
+      "executor": "nx:noop",
+      "outputs": ["generated/hello-web-api-swagger"]
+    },
+    "codegen": {
+      "executor": "@nx-dotnet/core:openapi-codegen",
+      "options": {
+        "useOpenApiGenerator": true,
+        "openApiGenerator": "typescript",
+        "openapiJsonPath": "generated/hello-web-api-swagger",
+        "outputProject": "generated-hello-web-api-types"
+      },
+      "dependsOn": ["swagger"],
+      "inputs": ["{projectRoot}/generated/hello-web-api-swagger"],
+      "outputs": ["{workspaceRoot}"]
+    }
+  },
+  "implicitDependencies": ["hello-web-api"]
+}
