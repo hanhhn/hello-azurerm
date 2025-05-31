@@ -8,9 +8,6 @@
     },
     {
       "path": "./apps/hello-react"
-    },
-    {
-      "path": "./libs/generated/hello-web-api-types"
     }
   ]
 }

@@ -5,13 +5,5 @@
   "sourceRoot": "apps/hello-web-api",
   "tags": [],
   "targets": {
-    "swagger": {
-      "executor": "@nx-dotnet/core:update-swagger",
-      "outputs": ["{workspaceRoot}/generated/hello-web-api-swagger"],
-      "options": {
-        "output": "generated/hello-web-api-swagger"
-      },
-      "dependsOn": ["build"]
-    }
   }
 }
