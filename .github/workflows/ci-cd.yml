@@ -33,6 +33,9 @@ jobs:
       # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
       - run: yarn nx affected -t build
 
+      - name: Check build output
+        run: ls -al dist/apps/hello-nestjs
+
       - name: Azure Login
         uses: azure/login@v1
         with:
@@ -43,4 +46,4 @@ jobs:
         with:
           app-name: 'az204-compute-appservices-web-app'
           slot-name: 'production'
-          package: './dist/apps/hello-nestjs'
+          package: 'dist/apps/hello-nestjs'
