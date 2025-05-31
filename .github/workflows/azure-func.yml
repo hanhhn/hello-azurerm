@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: hello-func
-          path: ./dist/apps/net8.0/publish  # or ./dist — adjust to your build folder
+          path: ./dist/apps/hello-func/net8.0/publish  # or ./dist — adjust to your build folder
 
   deploy:
     runs-on: ubuntu-latest
