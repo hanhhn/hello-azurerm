@@ -31,21 +31,24 @@ jobs:
       - run: yarn nx affected -t build
       - run: yarn nx publish hello-func
 
+      - name: Create deployment package
+        run: |
+          cd dist/apps/hello-func/net8.0/publish
+          zip -r hello-func.zip .
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: hello-func
-          path: |
-            ./dist/apps/hello-func/net8.0/publish/
-            ./dist/apps/hello-func/net8.0/publish/**/*
+          path: ./hello-func.zip
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
 
     permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
+      id-token: write
+      contents: read
 
     steps:
       - name: Download artifact
