@@ -68,6 +68,7 @@ jobs:
           slot-name: 'production'
           package: .
 
-      - uses: geekyeggo/delete-artifact@v5
+      - name: Delete artifact
+        uses: geekyeggo/delete-artifact@v5
         with:
           name: hello-func
