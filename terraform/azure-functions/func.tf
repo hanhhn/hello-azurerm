@@ -19,6 +19,12 @@ resource "azurerm_linux_function_app" "dotnet" {
   site_config {
     application_stack {
       dotnet_version = "8.0"
+      use_dotnet_isolated_runtime = true
     }
+  }
+
+  app_settings = {
+    FUNCTIONS_WORKER_RUNTIME = "dotnet-isolated"
+    FUNCTIONS_EXTENSION_VERSION = "~4"
   }
 }

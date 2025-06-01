@@ -1,4 +1,4 @@
-name: azure func
+name: Azure Functions
 
 on:
   push:
@@ -67,3 +67,7 @@ jobs:
           app-name: 'az204-compute-function-app-func'
           slot-name: 'production'
           package: .
+
+      - uses: geekyeggo/delete-artifact@v5
+        with:
+          name: hello-func

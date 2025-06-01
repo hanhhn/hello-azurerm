@@ -1,4 +1,4 @@
-name: CICD
+name: App Services
 
 on:
   push:
@@ -63,4 +63,8 @@ jobs:
           app-name: 'az204-compute-appservices-web-app'
           slot-name: 'production'
           package: .
+
+      - uses: geekyeggo/delete-artifact@v5
+        with:
+          name: packages
 

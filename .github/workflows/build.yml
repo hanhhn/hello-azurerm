@@ -1,4 +1,4 @@
-name: CI
+name: Build Apps
 
 on:
   push:
@@ -34,9 +34,9 @@ jobs:
       #- run: yarn nx affected -t build
       - run: yarn nx affected -t build
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: apps
-          path: ./dist/apps  # or ./dist — adjust to your build folder
+      # - name: Upload build artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: apps
+      #     path: ./dist/apps  # or ./dist — adjust to your build folder
 
