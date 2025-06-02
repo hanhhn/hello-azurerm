@@ -4,9 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
 using Microsoft.DurableTask;
 using Microsoft.DurableTask.Client;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace HelloFunc.Function;
 
@@ -21,18 +24,22 @@ public class MyOrchestrator
 
   // Client Function (HTTP Trigger)
   [Function("StartOrchestration")]
-    public async Task<HttpResponseData> Run(
+  [OpenApiOperation(operationId: "StartOrchestration", tags: new[] { "Hello" }, Summary = "StartOrchestration", Description = "This gets the name.", Visibility = OpenApiVisibilityType.Important)]
+  [OpenApiSecurity("function_key", SecuritySchemeType.ApiKey, Name = "code", In = OpenApiSecurityLocationType.Query)]
+  [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(string), Summary = "The response", Description = "This returns the response")]
+
+  public async Task<HttpResponseData> Run(
         [Microsoft.Azure.Functions.Worker.HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestData req,
         [DurableClient] DurableTaskClient client)
-    {
-        string instanceId = await client.ScheduleNewOrchestrationInstanceAsync("MyOrchestrator");
+  {
+    string instanceId = await client.ScheduleNewOrchestrationInstanceAsync("MyOrchestrator");
 
-        _logger.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+    _logger.LogInformation($"Started orchestration with ID = '{instanceId}'.");
 
-        var response = req.CreateResponse(HttpStatusCode.OK);
-        await response.WriteStringAsync($"Orchestration started with ID = {instanceId}");
-        return response;
-    }
+    var response = req.CreateResponse(HttpStatusCode.OK);
+    await response.WriteStringAsync($"Orchestration started with ID = {instanceId}");
+    return response;
+  }
 
   // Orchestrator function
   [FunctionName("MyOrchestrator")]
